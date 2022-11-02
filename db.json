@@ -7,6 +7,10 @@
     {
       "nome": "Bytebank",
       "id": 2
+    },
+    {
+      "nome": "GRVA",
+      "id": 3
     }
   ],
   "tarefas": [
@@ -27,6 +31,15 @@
         "nome": "Alura Tracker 2.0"
       },
       "id": 2
+    },
+    {
+      "duracaoEmSegundos": 7,
+      "descricao": "Estudo do Unreal parte 1",
+      "projeto": {
+        "nome": "GRVA",
+        "id": 3
+      },
+      "id": 3
     }
   ]
 }

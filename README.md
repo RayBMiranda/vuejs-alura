@@ -1,16 +1,16 @@
 # alura-tracker
 
-## Project setup
+## Preparação das dependencias do projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilação e hot-reload para desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilação para distribuição / produção
 ```
 npm run build
 ```
