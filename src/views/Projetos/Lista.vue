@@ -2,7 +2,7 @@
     <section class="projetos">
         <RouterLink to="/projetos/novo" class="button">
             <span class="icon is-small">
-                <i class="fas fa-plus"></i>
+                <i class="fa fa-plus"></i>
             </span>
             <span>Novo Projeto</span>
         </RouterLink>
@@ -24,12 +24,12 @@
                     <td>
                         <RouterLink :to="`/projetos/${projeto.id}`" class="button">
                             <span class="icon is-small">
-                                <i class="fas fa-pencil-alt"></i>
+                                <i class="fa fa-pencil"></i>
                             </span>
                         </RouterLink>
                         <button class="button ml-2 is-danger" @click="excluir(projeto.id)">
                             <span class="icon is-small">
-                                <i class="fas fa-trash"></i>
+                                <i class="fa fa-trash"></i>
                             </span>
                         </button>
                     </td>
@@ -56,7 +56,7 @@ export default defineComponent({
         const store = useStore()
         store.dispatch(OBTER_PROJETOS)
         return {
-            projetos: computed(() => store.state.projetos),
+            projetos: computed(() => store.state.projeto.projetos),
             store
         }
     }

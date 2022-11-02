@@ -10,13 +10,13 @@
             <ul>
                 <li>
                     <RouterLink to="/" class="link">
-                        <i class="fas fa-tasks"></i>
+                        <i class="fa fa-tasks"></i>
                         tarefas
                     </RouterLink>
                 </li>
                 <li>
                     <RouterLink to="/projetos" class="link">
-                        <i class="fas fa-project-diagram"></i>
+                        <i class="fa fa-bars"></i>
                         projetos
                     </RouterLink>
                 </li>

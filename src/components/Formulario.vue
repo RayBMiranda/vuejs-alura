@@ -37,7 +37,6 @@ import { NOTIFICAR } from '@/store/tipo-mutacoes'
 import { computed } from '@vue/reactivity'
 import {defineComponent} from 'vue'
 import { useStore } from 'vuex'
-import Temporizador from './Temporizador.vue'
 import MeuTemporizador from './Temporizador.vue'
 
 export default defineComponent({
@@ -72,7 +71,7 @@ export default defineComponent({
     setup () {
         const store = useStore(key)
         return {
-            projetos: computed(() => store.state.projetos),
+            projetos: computed(() => store.state.projeto.projetos),
             store
         }
     }
