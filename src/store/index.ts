@@ -45,8 +45,14 @@ export const store = createStore<Estado>({
         },
     },
     actions: {
-        [OBTER_TAREFAS] ({ commit }) {
-            http.get('tarefas')
+        [OBTER_TAREFAS] ({ commit }, filtro: string) {
+            let url = 'tarefas'
+
+            if(filtro){
+                url += '?descricao=' + filtro
+            }
+
+            http.get(url)
                 .then(resposta => commit(DEFINIR_TAREFAS, resposta.data))
         },
         [CADASTRAR_TAREFA] ({commit}, tarefa: ITarefa){
@@ -56,7 +62,7 @@ export const store = createStore<Estado>({
         [ALTERAR_TAREFA] ({commit}, tarefa: ITarefa){
             return http.put(`/tarefas/${tarefa.id}`, tarefa)
             .then(respota => commit(ALTERA_TAREFA, tarefa))
-        }
+        },
     },
     modules: {
         projeto

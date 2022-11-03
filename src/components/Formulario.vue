@@ -34,7 +34,7 @@
 import { TipoNotificacao } from '@/interfaces/INotificacao'
 import { key } from '@/store'
 import { NOTIFICAR } from '@/store/tipo-mutacoes'
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import {defineComponent} from 'vue'
 import { useStore } from 'vuex'
 import MeuTemporizador from './Temporizador.vue'
@@ -43,36 +43,38 @@ export default defineComponent({
     name: "MeuFormulario",
     emits: ['aoSalvarTarefa'],
     components: { MeuTemporizador },
-    data (){
-        return {
-            descricao: '',
-            idProjeto: ''
-        }
-    },
-    methods: {
-        finalizarTarefa (tempoDecorrido: number) : void{
-            const projeto = this.projetos.find((p) => p.id == this.idProjeto); // primeiro, buscamos pelo projeto
+    setup (props, { emit }) {
+        const store = useStore(key)
+
+        const descricao = ref("")
+        const idProjeto = ref("")
+
+        const projetos = computed(() => store.state.projeto.projetos)
+
+        const finalizarTarefa = (tempoDecorrido: number) : void => {
+            const projeto = projetos.value.find((p) => p.id == idProjeto.value); // primeiro, buscamos pelo projeto
             if(!projeto) { // se o projeto não existe...
-                this.store.commit(NOTIFICAR, {
+                store.commit(NOTIFICAR, {
                     titulo: 'Ops!',
                     texto: "Selecione um projeto antes de finalizar a tarefa!",
                     tipo: TipoNotificacao.FALHA
                 }); // notificamos o usuário
                 return; // ao fazer return aqui, o restante do método salvarTarefa não será executado. chamamos essa técnica de early return :)
             }
-            this.$emit('aoSalvarTarefa', {
+            emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
-                descricao: this.descricao,
-                projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+                descricao: descricao.value,
+                projeto: projetos.value.find(proj => proj.id == idProjeto.value)
             })
-            this.descricao = ''
+            descricao.value = ''
         }
-    },
-    setup () {
-        const store = useStore(key)
+
         return {
-            projetos: computed(() => store.state.projeto.projetos),
-            store
+            descricao,
+            idProjeto,
+            store,
+            projetos,
+            finalizarTarefa
         }
     }
 })

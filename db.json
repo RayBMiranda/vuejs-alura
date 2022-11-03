@@ -2,7 +2,7 @@
   "projetos": [
     {
       "id": 1,
-      "nome": "Alura Tracker 2.0"
+      "nome": "Alura Tracker 3.0"
     },
     {
       "nome": "Bytebank",
@@ -11,13 +11,17 @@
     {
       "nome": "GRVA",
       "id": 3
+    },
+    {
+      "id": 4,
+      "nome": "vue 2"
     }
   ],
   "tarefas": [
     {
       "id": 1,
       "duracaoEmSegundos": 120,
-      "descricao": "Configuração do ambiente",
+      "descricao": "Configuração do ambiente 2",
       "projeto": {
         "id": 1,
         "nome": "Alura Tracker 3.0"
@@ -40,6 +44,15 @@
         "id": 3
       },
       "id": 3
+    },
+    {
+      "duracaoEmSegundos": 2,
+      "descricao": "teste",
+      "projeto": {
+        "id": 1,
+        "nome": "Alura Tracker 3.0"
+      },
+      "id": 4
     }
   ]
 }
